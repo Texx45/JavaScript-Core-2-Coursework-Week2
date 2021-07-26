@@ -8,12 +8,14 @@ function listOfNames(arrayOfPeople) {
     const markup = `
     
  <div class="person-description">
-    <h1>
+ <ul>
+    <li>
         ${peoplesNames}
-    </h1>
-    <h2>
+    </li>
+    <li>
         ${peoplesJobs}
-    </h2>
+    </li>
+    </ul>
  </div>
     `;
     document.body.innerHTML += markup;
