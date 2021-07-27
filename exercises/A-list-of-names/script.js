@@ -18,7 +18,7 @@ function listOfNames(arrayOfPeople) {
     </ul>
  </div>
     `;
-    document.body.innerHTML += markup;
+    content.innerHTML += markup;
   }
 }
 
