@@ -8,6 +8,7 @@ const books = [
     title: "Lord of the Rings",
     author: "J.R.R. Tolkien",
     alreadyRead: false,
+    bookCover:
   },
   {
     title: "Harry Potter and the Philosophers Stone",
