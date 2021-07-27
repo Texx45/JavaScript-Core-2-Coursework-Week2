@@ -26,7 +26,7 @@ function readingList(books) {
  </ul>
 
     `;
-    document.body.innerHTML += markup;
+    content.innerHTML += markup;
   }
 }
 
