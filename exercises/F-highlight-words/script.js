@@ -1,5 +1,39 @@
 function highlightWords(paragraph, colours) {
-  // Write your code here...
+  const renderContent = document.querySelector("#content"); // find element to put list in
+  const createParagraph = document.createElement("p"); // create 'paragraph'
+  const createSelect = document.createElement("select"); // create 'select'
+  // *** APPEND ELEMENTS ***
+  // - Create a `<p>` element.
+  // - Create a `<select>` element.
+  renderContent.appendChild(createParagraph);
+  renderContent.appendChild(createSelect);
+  // - Iterate over the options array and create an `<option>` element in the `<select>` for each element.
+  colours.forEach((colour) => {
+    const createOption = document.createElement("option");
+    createOption.innerText = colour;
+    createOption.value = colour;
+    createSelect.appendChild(createOption);
+  });
+  // - You'll need to turn the paragraph into an array to iterate over it. You can use the `.split(" ")` method here.
+  const paragraphToArray = paragraph.split(" ");
+  // - Iterate over the array of words.
+  paragraphToArray.forEach((word) => {
+    // - For each word, create a `<span>` element and set the innerText to the word, plus a space - " ". Add this to the `<p>`.
+    const createSpan = document.createElement("span");
+    createSpan.innerText = word + " ";
+    createParagraph.appendChild(createSpan);
+    // - Each `<span>` should have an eventListener that will listen for clicks.
+    createSpan.addEventListener("click", function () {
+      // - When clicked, we need to check the value of the `<select>` element using the `.value` property.
+      // console.log(createSelect.value);
+      // - We can then update the `background-color` property of the `<span>` with the value of the select - remember that the value "none" is a special case and we need to be handled differently.
+      if (createSelect.value === "none") {
+        createSpan.style.backgroundColor = "white";
+      } else {
+        createSpan.style.backgroundColor = createSelect.value;
+      }
+    });
+  });
 }
 
 const paragraph =

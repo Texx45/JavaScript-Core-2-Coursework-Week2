@@ -1,5 +1,30 @@
 function populateTodoList(todos) {
-  let list = document.getElementById("todo-list");
+  let list = document.getElementById("todo-list"); // grabs the todo-list element and saves to a variable
+
+  todos.forEach((todo) => {
+    const todoLi = document.createElement("li"); // create the li element
+    todoLi.innerText = todo.task; // set the inner text to that of todo.task
+
+    const buttonSpan = document.createElement("span"); // creates a button span tag
+    buttonSpan.className = "badge bg-primary rounded-pill"; // sets the button span class
+    todoLi.appendChild(buttonSpan); // adds the button span element to the todo li
+
+    const tickIcon = document.createElement("i"); // creates an i element
+    // tickIcon.addEventListener
+    tickIcon.className = "fa fa-check"; // gives the tick icon type (bootstrap)
+    buttonSpan.appendChild(tickIcon); // adds the tick icon to the button span tag
+
+    const trashIcon = document.createElement("i"); // creates an i element
+    trashIcon.className = "fa fa-trash"; // gives the trash icon type (bootstrap)
+    buttonSpan.appendChild(trashIcon); // adds the tick icon to the button span tag
+
+    todoLi.className =
+      "list-group-item d-flex justify-content-between align-items-center";
+    list.appendChild(todoLi); // adds the bootstrap class to the list item
+  });
+
+  // buttons
+
   // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
 }
 
