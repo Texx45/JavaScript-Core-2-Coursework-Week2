@@ -1,9 +1,13 @@
-function populateTodoList(todos) {
-  let list = document.getElementById("todo-list"); // grabs the todo-list element and saves to a variable
+let todoLi;
+let list = document.getElementById("todo-list"); // grabs the todo-list element and saves to a variable
 
-  todos.forEach((todo) => {
-    const todoLi = document.createElement("li"); // create the li element
+function populateTodoList(todos) {
+  todos.forEach((todo, index) => {
+    todoLi = document.createElement("li"); // create the li element
     todoLi.innerText = todo.task; // set the inner text to that of todo.task
+    if (todo.completed) {
+      todoLi.style.textDecoration = "line-through"; // adds line-through if item completed = true
+    }
 
     const buttonSpan = document.createElement("span"); // creates a button span tag
     buttonSpan.className = "badge bg-primary rounded-pill"; // sets the button span class
@@ -21,6 +25,22 @@ function populateTodoList(todos) {
     todoLi.className =
       "list-group-item d-flex justify-content-between align-items-center";
     list.appendChild(todoLi); // adds the bootstrap class to the list item
+
+    // **** Steve I had an issue with functionality as explained on slack ****
+
+    tickIcon.addEventListener("click", () => {
+      // click event for tickIcon
+      if (todoLi.style.textDecoration === "line-through") {
+        // add remove line-through
+        todoLi.style.textDecoration = "none";
+      } else {
+        todoLi.style.textDecoration = "line-through";
+      }
+    });
+    trashIcon.addEventListener("click", () => {
+      todoLi.remove();
+      // remove icon when clicked
+    });
   });
 
   // buttons
@@ -41,6 +61,12 @@ populateTodoList(todos);
 function addNewTodo(event) {
   // The code below prevents the page from refreshing when we click the 'Add Todo' button.
   event.preventDefault();
+  let todoInput = document.getElementById("todoInput");
+  todos.push({ task: `${todoInput.value}`, completed: false });
+  list.innerHTML = "";
+  populateTodoList(todos);
+  console.log(todos);
+  todoInput.value = "";
   // Write your code here... and remember to reset the input field to be blank after creating a todo!
 }
 
