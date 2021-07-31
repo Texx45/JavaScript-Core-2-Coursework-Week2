@@ -1,9 +1,9 @@
-let todoLi;
+// let todoLi;
 let list = document.getElementById("todo-list"); // grabs the todo-list element and saves to a variable
 
 function populateTodoList(todos) {
   todos.forEach((todo, index) => {
-    todoLi = document.createElement("li"); // create the li element
+    let todoLi = document.createElement("li"); // create the li element
     todoLi.innerText = todo.task; // set the inner text to that of todo.task
     if (todo.completed) {
       todoLi.style.textDecoration = "line-through"; // adds line-through if item completed = true
